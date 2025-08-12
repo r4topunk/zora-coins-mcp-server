@@ -1,7 +1,9 @@
 # 🎨 Zora Coins MCP Server
 
-[![npm version](https://badge.fury.io/js/zora-coins-mcp-server.svg)](https://badge.fury.io/js/zora-coins-mcp-server)
+[![npm version](https://img.shields.io/npm/v/zora-coins-mcp-server.svg)](https://www.npmjs.com/package/zora-coins-mcp-server)
+[![npm downloads](https://img.shields.io/npm/dm/zora-coins-mcp-server.svg)](https://www.npmjs.com/package/zora-coins-mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
 A production-ready [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server that provides seamless access to the [Zora Coins](https://zora.co/coins) ecosystem. Query coin data, explore markets, manage profiles, and execute trades on Base mainnet through a simple, standardized interface.
 

@@ -1,6 +1,6 @@
 {
   "name": "zora-coins-mcp-server",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "An MCP (Model Context Protocol) server exposing Zora Coins SDK queries and write actions over stdio.",
   "type": "module",
   "main": "dist/index.js",

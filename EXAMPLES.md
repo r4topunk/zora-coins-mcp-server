@@ -8,13 +8,13 @@ This guide provides practical examples of using the Zora Coins MCP Server for co
 
 ```javascript
 // Find the hottest new coins
-await mcp.callTool("zora.explore_new", { count: 10 });
+await mcp.callTool("zora_explore_new", { count: 10 });
 
 // Check biggest gainers in the last 24h
-await mcp.callTool("zora.explore_top_gainers", { count: 5 });
+await mcp.callTool("zora_explore_top_gainers", { count: 5 });
 
 // See coins with highest trading volume
-await mcp.callTool("zora.explore_top_volume_24h", { count: 5 });
+await mcp.callTool("zora_explore_top_volume_24h", { count: 5 });
 ```
 
 **Natural Language (Claude/Cursor):**
@@ -28,18 +28,18 @@ Which coins have the highest trading volume in the last 24 hours?
 
 ```javascript
 // Get comprehensive coin data
-const coinData = await mcp.callTool("zora.get_coin", {
+const coinData = await mcp.callTool("zora_get_coin", {
   address: "0xd769d56f479e9e72a77bb1523e866a33098feec5"
 });
 
 // Check who's holding the coin
-const holders = await mcp.callTool("zora.get_coin_holders", {
+const holders = await mcp.callTool("zora_get_coin_holders", {
   address: "0xd769d56f479e9e72a77bb1523e866a33098feec5",
   count: 20
 });
 
 // See recent trading activity
-const trades = await mcp.callTool("zora.get_coin_swaps", {
+const trades = await mcp.callTool("zora_get_coin_swaps", {
   address: "0xd769d56f479e9e72a77bb1523e866a33098feec5",
   first: 15
 });
@@ -57,18 +57,18 @@ Show me its market data, top holders, and recent trades.
 
 ```javascript
 // Get creator profile information
-const profile = await mcp.callTool("zora.get_profile", {
+const profile = await mcp.callTool("zora_get_profile", {
   identifier: "jacob"  // Can use handle or wallet address
 });
 
 // See what coins they've created
-const createdCoins = await mcp.callTool("zora.get_profile_coins", {
+const createdCoins = await mcp.callTool("zora_get_profile_coins", {
   identifier: "jacob",
   count: 10
 });
 
 // Check their coin portfolio
-const portfolio = await mcp.callTool("zora.get_profile_balances", {
+const portfolio = await mcp.callTool("zora_get_profile_balances", {
   identifier: "jacob",
   count: 20
 });
@@ -84,22 +84,22 @@ Show me Base's profile and all the coins they've launched
 
 ```javascript
 // Multi-step analysis combining several calls
-const profileData = await mcp.callTool("zora.get_profile", {
+const profileData = await mcp.callTool("zora_get_profile", {
   identifier: "base"
 });
 
-const createdCoins = await mcp.callTool("zora.get_profile_coins", {
+const createdCoins = await mcp.callTool("zora_get_profile_coins", {
   identifier: "base",
   count: 5
 });
 
 // For each coin, get detailed metrics
 for (const coin of createdCoins.data.profile.createdCoins.edges) {
-  const coinDetails = await mcp.callTool("zora.get_coin", {
+  const coinDetails = await mcp.callTool("zora_get_coin", {
     address: coin.node.address
   });
   
-  const holders = await mcp.callTool("zora.get_coin_holders", {
+  const holders = await mcp.callTool("zora_get_coin_holders", {
     address: coin.node.address,
     count: 5
   });
@@ -118,7 +118,7 @@ market performance, and holder distribution for each coin.
 
 ```javascript
 // Buy a coin with ETH
-const buyTrade = await mcp.callTool("zora.trade_coin", {
+const buyTrade = await mcp.callTool("zora_trade_coin", {
   sellType: "eth",
   buyType: "erc20",
   buyAddress: "0xf1fc9580784335b2613c1392a530c1aa2a69ba3d", // horse coin
@@ -127,7 +127,7 @@ const buyTrade = await mcp.callTool("zora.trade_coin", {
 });
 
 // Later, sell some back
-const sellTrade = await mcp.callTool("zora.trade_coin", {
+const sellTrade = await mcp.callTool("zora_trade_coin", {
   sellType: "erc20",
   sellAddress: "0xf1fc9580784335b2613c1392a530c1aa2a69ba3d",
   sellDecimals: 18,
@@ -141,14 +141,14 @@ const sellTrade = await mcp.callTool("zora.trade_coin", {
 
 ```javascript
 // Check current portfolio
-const portfolio = await mcp.callTool("zora.get_profile_balances", {
+const portfolio = await mcp.callTool("zora_get_profile_balances", {
   identifier: "0xYourWalletAddress",
   count: 50
 });
 
 // Analyze each holding
 for (const holding of portfolio.data.profile.coinBalances.edges) {
-  const coinData = await mcp.callTool("zora.get_coin", {
+  const coinData = await mcp.callTool("zora_get_coin", {
     address: holding.node.coin.address
   });
   
@@ -167,7 +167,7 @@ for (const holding of portfolio.data.profile.coinBalances.edges) {
 
 ```javascript
 // 1. Create the coin
-const newCoin = await mcp.callTool("zora.create_coin", {
+const newCoin = await mcp.callTool("zora_create_coin", {
   name: "My Creative Journey",
   symbol: "JOURNEY",
   uri: "ipfs://bafybeiabc123...", // Your metadata URI
@@ -177,7 +177,7 @@ const newCoin = await mcp.callTool("zora.create_coin", {
 });
 
 // 2. Make initial purchase to establish liquidity
-const initialBuy = await mcp.callTool("zora.trade_coin", {
+const initialBuy = await mcp.callTool("zora_trade_coin", {
   sellType: "eth",
   buyType: "erc20",
   buyAddress: newCoin.contractAddress,
@@ -186,7 +186,7 @@ const initialBuy = await mcp.callTool("zora.trade_coin", {
 });
 
 // 3. Monitor the launch
-const coinStatus = await mcp.callTool("zora.get_coin", {
+const coinStatus = await mcp.callTool("zora_get_coin", {
   address: newCoin.contractAddress
 });
 ```
@@ -195,13 +195,13 @@ const coinStatus = await mcp.callTool("zora.get_coin", {
 
 ```javascript
 // Update the metadata URI (creator only)
-const updateResult = await mcp.callTool("zora.update_coin_uri", {
+const updateResult = await mcp.callTool("zora_update_coin_uri", {
   coin: "0xYourCoinAddress",
   newURI: "ipfs://bafybeiabc456..." // Updated metadata
 });
 
 // Change payout recipient (creator only)
-const payoutUpdate = await mcp.callTool("zora.update_payout_recipient", {
+const payoutUpdate = await mcp.callTool("zora_update_payout_recipient", {
   coin: "0xYourCoinAddress",
   newPayoutRecipient: "0xNewRecipientAddress"
 });
@@ -213,7 +213,7 @@ const payoutUpdate = await mcp.callTool("zora.update_payout_recipient", {
 
 ```javascript
 // Get community comments
-const comments = await mcp.callTool("zora.get_coin_comments", {
+const comments = await mcp.callTool("zora_get_coin_comments", {
   address: "0xd769d56f479e9e72a77bb1523e866a33098feec5",
   count: 50
 });
@@ -251,14 +251,14 @@ class DCABot {
   async executeDCA() {
     try {
       // Get current price for logging
-      const coinData = await mcp.callTool("zora.get_coin", {
+      const coinData = await mcp.callTool("zora_get_coin", {
         address: this.targetCoin
       });
       
       console.log(`DCA: Buying ${this.weeklyAmount} ETH worth of ${coinData.data.zora20Token.name}`);
       
       // Execute purchase
-      const trade = await mcp.callTool("zora.trade_coin", {
+      const trade = await mcp.callTool("zora_trade_coin", {
         sellType: "eth",
         buyType: "erc20",
         buyAddress: this.targetCoin,
@@ -292,10 +292,10 @@ const dcaBot = new DCABot(
 class TrendFollower {
   async findTrendingCoins() {
     // Get top gainers
-    const gainers = await mcp.callTool("zora.explore_top_gainers", { count: 10 });
+    const gainers = await mcp.callTool("zora_explore_top_gainers", { count: 10 });
     
     // Get high volume coins
-    const highVolume = await mcp.callTool("zora.explore_top_volume_24h", { count: 10 });
+    const highVolume = await mcp.callTool("zora_explore_top_volume_24h", { count: 10 });
     
     // Find coins that appear in both lists
     const gainerAddresses = new Set(
@@ -314,7 +314,7 @@ class TrendFollower {
       const coin = coinEdge.node;
       
       // Get detailed data
-      const details = await mcp.callTool("zora.get_coin", {
+      const details = await mcp.callTool("zora_get_coin", {
         address: coin.address
       });
       
@@ -340,7 +340,7 @@ class TrendFollower {
 ```javascript
 async function generatePortfolioReport(walletAddress) {
   // Get current holdings
-  const portfolio = await mcp.callTool("zora.get_profile_balances", {
+  const portfolio = await mcp.callTool("zora_get_profile_balances", {
     identifier: walletAddress,
     count: 100
   });
@@ -349,7 +349,7 @@ async function generatePortfolioReport(walletAddress) {
   const holdings = [];
   
   for (const holding of portfolio.data.profile.coinBalances.edges) {
-    const coinData = await mcp.callTool("zora.get_coin", {
+    const coinData = await mcp.callTool("zora_get_coin", {
       address: holding.node.coin.address
     });
     
@@ -402,7 +402,7 @@ class PriceMonitor {
   async checkPrices() {
     for (const target of this.targets) {
       try {
-        const coinData = await mcp.callTool("zora.get_coin", {
+        const coinData = await mcp.callTool("zora_get_coin", {
           address: target.address
         });
         
@@ -466,7 +466,7 @@ const monitor = new PriceMonitor([
 async function batchCoinAnalysis(addresses) {
   const results = await Promise.all(
     addresses.map(address => 
-      mcp.callTool("zora.get_coin", { address })
+      mcp.callTool("zora_get_coin", { address })
     )
   );
   
@@ -492,7 +492,7 @@ const analysis = await batchCoinAnalysis(coins);
 async function robustTrade(params, maxRetries = 3) {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
-      const result = await mcp.callTool("zora.trade_coin", params);
+      const result = await mcp.callTool("zora_trade_coin", params);
       console.log(`Trade successful on attempt ${attempt}`);
       return result;
       

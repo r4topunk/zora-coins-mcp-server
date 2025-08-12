@@ -77,7 +77,7 @@ const server = new McpServer({
 
 // Diagnostics
 server.registerTool(
-  "zora.health",
+  "zora_health",
   {
     title: "Zora Coins server health",
     description:
@@ -98,7 +98,7 @@ server.registerTool(
 
 // ---- Read tools (Queries) ----
 server.registerTool(
-  "zora.get_coin",
+  "zora_get_coin",
   {
     title: "Get coin details",
     description: "Fetch metadata, market data & creator info for a coin.",
@@ -115,7 +115,7 @@ server.registerTool(
 );
 
 server.registerTool(
-  "zora.get_coins",
+  "zora_get_coins",
   {
     title: "Get multiple coins",
     description: "Batch fetch coins by address and chainId.",
@@ -138,7 +138,7 @@ server.registerTool(
 );
 
 server.registerTool(
-  "zora.get_coin_holders",
+  "zora_get_coin_holders",
   {
     title: "Get coin holders",
     description: "List holders of a coin with balances and profile data.",
@@ -162,7 +162,7 @@ server.registerTool(
 );
 
 server.registerTool(
-  "zora.get_coin_swaps",
+  "zora_get_coin_swaps",
   {
     title: "Get coin swaps",
     description: "Fetch recent buy/sell swap activity for a coin.",
@@ -186,7 +186,7 @@ server.registerTool(
 );
 
 server.registerTool(
-  "zora.get_coin_comments",
+  "zora_get_coin_comments",
   {
     title: "Get coin comments",
     description: "Fetch comments associated with a coin (paginated).",
@@ -210,7 +210,7 @@ server.registerTool(
 );
 
 server.registerTool(
-  "zora.get_profile",
+  "zora_get_profile",
   {
     title: "Get profile",
     description: "Fetch profile for a wallet or @handle.",
@@ -226,7 +226,7 @@ server.registerTool(
 );
 
 server.registerTool(
-  "zora.get_profile_coins",
+  "zora_get_profile_coins",
   {
     title: "Get profile-created coins",
     description: "List coins created by a profile.",
@@ -246,7 +246,7 @@ server.registerTool(
 );
 
 server.registerTool(
-  "zora.get_profile_balances",
+  "zora_get_profile_balances",
   {
     title: "Get profile balances",
     description: "List coin balances for a wallet or handle.",
@@ -288,42 +288,42 @@ function exploreTool(
 }
 
 exploreTool(
-  "zora.explore_top_gainers",
+  "zora_explore_top_gainers",
   // @ts-expect-error - TypeScript can't resolve barrel exports properly
   CoinsSDK.getCoinsTopGainers,
   "Top gainers (24h)",
   "Coins with highest market cap delta over last 24h."
 );
 exploreTool(
-  "zora.explore_top_volume_24h",
+  "zora_explore_top_volume_24h",
   // @ts-expect-error - TypeScript can't resolve barrel exports properly
   CoinsSDK.getCoinsTopVolume24h,
   "Top 24h volume",
   "Coins with highest trading volume in last 24 hours."
 );
 exploreTool(
-  "zora.explore_most_valuable",
+  "zora_explore_most_valuable",
   // @ts-expect-error - TypeScript can't resolve barrel exports properly
   CoinsSDK.getCoinsMostValuable,
   "Most valuable",
   "Coins with highest market capitalization."
 );
 exploreTool(
-  "zora.explore_new",
+  "zora_explore_new",
   // @ts-expect-error - TypeScript can't resolve barrel exports properly
   CoinsSDK.getCoinsNew,
   "New coins",
   "Most recently created coins."
 );
 exploreTool(
-  "zora.explore_last_traded",
+  "zora_explore_last_traded",
   // @ts-expect-error - TypeScript can't resolve barrel exports properly
   CoinsSDK.getCoinsLastTraded,
   "Last traded",
   "Coins most recently traded."
 );
 exploreTool(
-  "zora.explore_last_traded_unique",
+  "zora_explore_last_traded_unique",
   // @ts-expect-error - TypeScript can't resolve barrel exports properly
   CoinsSDK.getCoinsLastTradedUnique,
   "Last traded (unique traders)",
@@ -332,7 +332,7 @@ exploreTool(
 
 // ---- Write tools ----
 server.registerTool(
-  "zora.create_coin",
+  "zora_create_coin",
   {
     title: "Create a new coin",
     description:
@@ -386,7 +386,7 @@ server.registerTool(
 );
 
 server.registerTool(
-  "zora.update_coin_uri",
+  "zora_update_coin_uri",
   {
     title: "Update coin metadata URI",
     description:
@@ -408,7 +408,7 @@ server.registerTool(
 );
 
 server.registerTool(
-  "zora.update_payout_recipient",
+  "zora_update_payout_recipient",
   {
     title: "Update payout recipient",
     description:
@@ -430,7 +430,7 @@ server.registerTool(
 );
 
 server.registerTool(
-  "zora.trade_coin",
+  "zora_trade_coin",
   {
     title: "Trade coin",
     description:

@@ -158,32 +158,32 @@ npm run dev
 ## 📖 Available Tools
 
 ### 🏥 Health Check
-- `zora.health` - Server diagnostics and configuration status
+- `zora_health` - Server diagnostics and configuration status
 
 ### 🔍 Market Exploration
-- `zora.explore_new` - Recently created coins
-- `zora.explore_top_gainers` - Biggest 24h gainers
-- `zora.explore_top_volume_24h` - Highest trading volume
-- `zora.explore_most_valuable` - Highest market cap
-- `zora.explore_last_traded` - Recently traded coins
+- `zora_explore_new` - Recently created coins
+- `zora_explore_top_gainers` - Biggest 24h gainers
+- `zora_explore_top_volume_24h` - Highest trading volume
+- `zora_explore_most_valuable` - Highest market cap
+- `zora_explore_last_traded` - Recently traded coins
 
 ### 💰 Coin Data
-- `zora.get_coin` - Comprehensive coin information
-- `zora.get_coins` - Batch fetch multiple coins
-- `zora.get_coin_holders` - Token holder list with balances
-- `zora.get_coin_swaps` - Recent trading activity
-- `zora.get_coin_comments` - Community comments
+- `zora_get_coin` - Comprehensive coin information
+- `zora_get_coins` - Batch fetch multiple coins
+- `zora_get_coin_holders` - Token holder list with balances
+- `zora_get_coin_swaps` - Recent trading activity
+- `zora_get_coin_comments` - Community comments
 
 ### 👤 Profile Management
-- `zora.get_profile` - User profile information
-- `zora.get_profile_coins` - Coins created by user
-- `zora.get_profile_balances` - User's coin portfolio
+- `zora_get_profile` - User profile information
+- `zora_get_profile_coins` - Coins created by user
+- `zora_get_profile_balances` - User's coin portfolio
 
 ### ⚡ Trading & Creation (Requires Wallet)
-- `zora.create_coin` - Deploy new creator coin
-- `zora.trade_coin` - Buy/sell coins
-- `zora.update_coin_uri` - Update metadata
-- `zora.update_payout_recipient` - Change earnings recipient
+- `zora_create_coin` - Deploy new creator coin
+- `zora_trade_coin` - Buy/sell coins
+- `zora_update_coin_uri` - Update metadata
+- `zora_update_payout_recipient` - Change earnings recipient
 
 ## 💡 Usage Examples
 
@@ -191,22 +191,22 @@ npm run dev
 
 ```javascript
 // Get top 5 newest coins
-await mcp.callTool("zora.explore_new", { count: 5 });
+await mcp.callTool("zora_explore_new", { count: 5 });
 
 // Find biggest gainers
-await mcp.callTool("zora.explore_top_gainers", { count: 3 });
+await mcp.callTool("zora_explore_top_gainers", { count: 3 });
 ```
 
 ### Analyze a Specific Coin
 
 ```javascript
 // Get detailed coin information
-await mcp.callTool("zora.get_coin", {
+await mcp.callTool("zora_get_coin", {
   address: "0xd769d56f479e9e72a77bb1523e866a33098feec5"
 });
 
 // Check recent trading activity
-await mcp.callTool("zora.get_coin_swaps", {
+await mcp.callTool("zora_get_coin_swaps", {
   address: "0xd769d56f479e9e72a77bb1523e866a33098feec5",
   first: 10
 });
@@ -216,12 +216,12 @@ await mcp.callTool("zora.get_coin_swaps", {
 
 ```javascript
 // Get profile information
-await mcp.callTool("zora.get_profile", {
+await mcp.callTool("zora_get_profile", {
   identifier: "base"
 });
 
 // See coins created by user
-await mcp.callTool("zora.get_profile_coins", {
+await mcp.callTool("zora_get_profile_coins", {
   identifier: "jacob",
   count: 5
 });
@@ -231,7 +231,7 @@ await mcp.callTool("zora.get_profile_coins", {
 
 ```javascript
 // Buy a coin with ETH
-await mcp.callTool("zora.trade_coin", {
+await mcp.callTool("zora_trade_coin", {
   sellType: "eth",
   buyType: "erc20", 
   buyAddress: "0x...",
@@ -240,7 +240,7 @@ await mcp.callTool("zora.trade_coin", {
 });
 
 // Create a new coin
-await mcp.callTool("zora.create_coin", {
+await mcp.callTool("zora_create_coin", {
   name: "My Creator Coin",
   symbol: "MCC",
   uri: "ipfs://...",

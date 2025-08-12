@@ -5,6 +5,7 @@
   "type": "module",
   "main": "dist/index.js",
   "bin": {
+    "zora-coins-mcp-server": "dist/index.js",
     "zora-coins-mcp": "dist/index.js"
   },
   "files": [

@@ -33,25 +33,24 @@ A production-ready [Model Context Protocol (MCP)](https://modelcontextprotocol.i
 #### Option 1: NPX (Recommended - No Installation Required)
 ```bash
 # Run directly with npx - always uses latest version
+npx zora-coins-mcp
+```
+
+#### Option 2: NPX with Full Package Name
+```bash
+# Alternative NPX syntax
 npx zora-coins-mcp-server
 ```
 
-#### Option 2: Global Installation
+#### Option 3: Global Installation
 ```bash
 # Install globally for persistent use
 npm install -g zora-coins-mcp-server
 
-# Then run with
+# Then run with either command
 zora-coins-mcp
-```
-
-#### Option 3: Local Installation
-```bash
-# For project-specific usage
-npm install zora-coins-mcp-server
-
-# Then run with
-npx zora-coins-mcp-server
+# or
+zora-coins-mcp-server
 ```
 
 ### Basic Setup
@@ -90,7 +89,7 @@ Add to your `~/.claude/mcp.json`:
   "mcpServers": {
     "zora-coins": {
       "command": "npx",
-      "args": ["zora-coins-mcp-server"],
+      "args": ["zora-coins-mcp"],
       "env": {
         "ZORA_API_KEY": "your_api_key_here",
         "BASE_RPC_URL": "https://mainnet.base.org",
@@ -125,7 +124,7 @@ Configure in your MCP settings:
 ```json
 {
   "name": "zora-coins",
-  "command": ["npx", "zora-coins-mcp-server"],
+  "command": ["npx", "zora-coins-mcp"],
   "env": {
     "ZORA_API_KEY": "your_api_key_here"
   }
@@ -147,7 +146,7 @@ Configure in your MCP settings:
 
 ```bash
 # Run as stdio server with npx
-npx zora-coins-mcp-server
+npx zora-coins-mcp
 
 # Or if globally installed
 zora-coins-mcp
